@@ -1,5 +1,4 @@
-#dates(hidden=true)
-  = render_dates(@data.keys)
-#values(hidden=true)
-  = render_values(@data.values)
-#chart
+- if user_signed_in?
+  = render 'dashboard'
+- else
+  = link_to 'Login with google', user_omniauth_authorize_path(:google_oauth2)

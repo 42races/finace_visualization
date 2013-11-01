@@ -1,0 +1,10 @@
+.nav
+  span
+    = current_user.name
+  span
+    = image_tag(current_user.image_url, class: 'avatar')
+#dates(hidden=true)
+  = render_dates(@data.keys)
+#values(hidden=true)
+  = render_values(@data.values)
+#chart

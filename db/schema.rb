@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131101064002) do
+ActiveRecord::Schema.define(version: 20131101100638) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "uid"
+    t.string   "image_url"
+    t.string   "provider"
+    t.string   "auth_token"
+    t.string   "gender"
   end
 
 end
