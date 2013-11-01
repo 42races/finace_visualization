@@ -43,6 +43,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'pry'
 
+gem 'slim'
 gem 'roo'
 gem 'google_drive'
