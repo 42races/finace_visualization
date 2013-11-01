@@ -4,16 +4,20 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
   def self.find_or_create(args)
-    user = User.find_by_uid(args[:uid])
-    return user if user.present?
     return nil unless $emails.include?(args[:email])
-    user = User.new(args)
+    user = User.find_by_uid(args[:uid]) || User.new(args)
+    user.update_info(args) unless user.new_record?
     user.save
     user
   end
 
   def name
-    "#{first_name} #{last_name}"
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
+
+  def update_info(args = {})
+    [:email, :uid, :provider].each { |key| args.delete(key) }
+    update_attributes(args)
   end
 end
 

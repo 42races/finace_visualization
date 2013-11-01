@@ -1,7 +1,9 @@
 class DashboardsController < ApplicationController
   def index
-    parser = SheetParser.new()
-    @data = parser.parse
+    if current_user.present?
+      parser = SheetParser.new(current_user)
+      @data = parser.parse
+    end
     render :index
   end
 end
