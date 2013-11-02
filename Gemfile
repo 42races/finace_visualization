@@ -39,12 +39,15 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'capistrano_colors'
+  gem 'pry'
+end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'pry'
-
+gem 'puma'
 gem 'slim'
 gem 'roo'
 gem 'google_drive'
