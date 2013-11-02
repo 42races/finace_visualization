@@ -3,8 +3,24 @@
     = current_user.name
   span
     = image_tag(current_user.image_url, class: 'avatar')
-#dates(hidden=true)
-  = render_dates(@data.keys)
-#values(hidden=true)
-  = render_values(@data.values)
-#chart
+
+#daily
+  .dates(hidden=true)
+    = render_dates(@data[:daily].keys)
+  .values(hidden=true)
+    = render_values(@data[:daily].values)
+  .chart
+
+#monthly
+  .months(hidden=true)
+    = render_months(@data[:monthly].keys)
+  .values(hidden=true)
+    = render_values(@data[:monthly].values)
+  .chart
+
+#personal
+  .dates(hidden=true)
+    = render_months(@personal[:dates])
+  .values(hidden=true)
+    = render_series(@personal[:series])
+  .chart

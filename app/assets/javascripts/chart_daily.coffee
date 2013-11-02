@@ -2,13 +2,12 @@ $ ->
 
   to_values_array = (values) ->
     arr = []
-    console.log(typeof values)
     $.each values, (index, value) ->
-      arr.push(parseFloat(value))
+      arr.push(parseInt(value))
     arr
 
 
-  $("#chart").highcharts
+  $("#daily .chart").highcharts
     title:
       text: "Daily Expense, Year 2013"
       x: -20 #center
@@ -18,7 +17,7 @@ $ ->
       x: -20
 
     xAxis:
-      categories: $("#dates").html().split(':')
+      categories: $("#daily .dates").html().split(':')
 
     yAxis:
       title:
@@ -41,6 +40,7 @@ $ ->
 
     series: [
       name: "Spent"
-      data: to_values_array($("#values").html().split(":"))
+      data: to_values_array($("#daily .values").html().split(":"))
     ]
+
 
